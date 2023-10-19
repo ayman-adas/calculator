@@ -11,6 +11,8 @@ class MOperator {
   static const String del = 'DEL';
 
   static const String miltiply = 'X';
+    static const String dot = '.';
+
   static const String divide = '/';
   static const String plMi = '+/-';
   static const String equal = '=';
