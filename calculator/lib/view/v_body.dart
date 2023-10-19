@@ -41,8 +41,9 @@ void operator() {
 
       break;
     case '%':
-      data1 %= data2;
+      data1 /= 100;
       ope = '';
+
       data2 = data1;
       break;
     case '^':
@@ -78,7 +79,7 @@ class _VBodyState extends State<VBody> {
             CButtonRow(
                 text1: MOperator.clear,
                 text2: MOperator.del,
-                text3: MOperator.mod,
+                text3: MOperator.percent,
                 text4: MOperator.divide,
                 click1: () {
                   data1 = 0;
@@ -95,10 +96,9 @@ class _VBodyState extends State<VBody> {
                   setState(() {});
                 },
                 click2: () {
-                  num data3 = data2;
-                  data3 %= 10;
-                  data2 -= data3;
-                  data2 /= 10;
+                  String data3 = data2.toString();
+                  data3 = data3.substring(0, data3.length);
+                  data2 = double.parse(data3);
                   setState(() {});
                 },
                 click4: () {
