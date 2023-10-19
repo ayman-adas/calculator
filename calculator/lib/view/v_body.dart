@@ -97,7 +97,7 @@ class _VBodyState extends State<VBody> {
                 },
                 click2: () {
                   String data3 = data2.toString();
-                  data3 = data3.substring(0, data3.length);
+                  data3 = data3.substring(0, data3.length-1);
                   data2 = double.parse(data3);
                   setState(() {});
                 },
