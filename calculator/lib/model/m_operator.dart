@@ -6,14 +6,12 @@ class MOperator {
 
   static const String clear = 'C';
 
-  static const String mod = '%';
+  static const String percent = '%';
 
   static const String del = 'DEL';
 
   static const String miltiply = 'X';
   static const String divide = '/';
-    static const String plMi = '+/-';
-        static const String equal = '=';
-
-
+  static const String plMi = '+/-';
+  static const String equal = '=';
 }
