@@ -209,7 +209,12 @@ class _VBodyState extends State<VBody> {
                 text3: MOperator.dot,
                 text4: MOperator.equal,
                 click1: () {
-                  data2 *= -1;
+                  if (data2.startsWith('-')) {
+                    data2 = data2.substring(1, data2.length);
+                  } else if (data2 == '') {
+                  } else {
+                    data2 = '-$data2';
+                  }
                   setState(() {});
                 },
                 click2: () {
