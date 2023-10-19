@@ -6,9 +6,9 @@ import 'package:calculator/model/m_operator.dart';
 import 'package:calculator/view/v_answer.dart';
 import 'package:flutter/material.dart';
 
-num data1 = 0;
+late num data1;
 
-num data2 = 0;
+String data2 = '';
 
 String ope = '';
 
@@ -17,39 +17,33 @@ void operator() {
     case '':
       break;
     case '/':
-      data1 /= data2;
+      data1 /= double.parse(data2);
       ope = '';
-      data2 = data1;
+      data2 = data1.toString();
 
       break;
     case 'X':
-      data1 *= data2;
+      data1 *= double.parse(data2);
       ope = '';
-      data2 = data1;
+      data2 = data1.toString();
 
       break;
     case '+':
-      data1 += data2;
+      data1 += double.parse(data2);
       ope = '';
-      data2 = data1;
+      data2 = data1.toString();
 
       break;
     case '-':
-      data1 -= data2;
+      data1 -= double.parse(data2);
       ope = '';
-      data2 = data1;
+      data2 = data1.toString();
 
-      break;
-    case '%':
-      data1 /= 100;
-      ope = '';
-
-      data2 = data1;
       break;
     case '^':
-      data1 = pow(data1, data2);
+      data1 = pow((data1), int.parse(data2));
       ope = '';
-      data2 = data1;
+      data2 = data1.toString();
       break;
   }
 }
@@ -79,33 +73,36 @@ class _VBodyState extends State<VBody> {
             CButtonRow(
                 text1: MOperator.clear,
                 text2: MOperator.del,
-                text3: MOperator.percent,
+                text3: MOperator.pow,
                 text4: MOperator.divide,
                 click1: () {
                   data1 = 0;
-                  data2 = 0;
+                  data2 = '';
                   ope = '';
                   setState(() {});
                 },
                 click3: () {
                   operator();
 
-                  data1 = data2;
-                  ope = '%';
-                  data2 = 0;
+                  data1 = double.parse(data2);
+                  ope = '^';
+                  data2 = '';
                   setState(() {});
                 },
                 click2: () {
-                  String data3 = data2.toString();
-                  data3 = data3.substring(0, data3.length-1);
-                  data2 = double.parse(data3);
+                  if (data2.length == 1) {
+                    data2 = '';
+                  } else {
+                    data2 = data2.substring(0, data2.length - 1);
+                  }
+
                   setState(() {});
                 },
                 click4: () {
                   operator();
 
-                  data1 = data2;
-                  data2 = 0;
+                  data1 = double.parse(data2);
+                  data2 = '';
 
                   ope = '/';
                   setState(() {});
@@ -119,30 +116,25 @@ class _VBodyState extends State<VBody> {
                 text3: MNumber.nine,
                 text4: MOperator.miltiply,
                 click1: () {
-                  data2 *= 10;
-                  data2 += 7;
+                  data2 += '7';
                   setState(() {});
                 },
                 click2: () {
-                  data2 *= 10;
-
-                  data2 += 8;
+                  data2 += '8';
 
                   setState(() {});
                 },
                 click3: () {
-                  data2 *= 10;
-
-                  data2 += 9;
+                  data2 += '9';
 
                   setState(() {});
                 },
                 click4: () {
                   operator();
 
-                  data1 = data2;
+                  data1 = double.parse(data2);
                   ope = 'X';
-                  data2 = 0;
+                  data2 = '';
                   setState(() {});
                 }),
             const SizedBox(
@@ -154,32 +146,26 @@ class _VBodyState extends State<VBody> {
                 text3: MNumber.six,
                 text4: MOperator.minus,
                 click1: () {
-                  data2 *= 10;
-
-                  data2 += 4;
+                  data2 += '4';
 
                   setState(() {});
                 },
                 click2: () {
-                  data2 *= 10;
-
-                  data2 += 5;
+                  data2 += '5';
 
                   setState(() {});
                 },
                 click3: () {
-                  data2 *= 10;
-
-                  data2 += 6;
+                  data2 += '6';
 
                   setState(() {});
                 },
                 click4: () {
                   operator();
 
-                  data1 = data2;
+                  data1 = double.parse(data2);
                   ope = '-';
-                  data2 = 0;
+                  data2 = '';
 
                   setState(() {});
                 }),
@@ -192,32 +178,26 @@ class _VBodyState extends State<VBody> {
                 text3: MNumber.three,
                 text4: MOperator.plus,
                 click1: () {
-                  data2 *= 10;
-
-                  data2 += 1;
+                  data2 += '1';
 
                   setState(() {});
                 },
                 click2: () {
-                  data2 *= 10;
-
-                  data2 += 2;
+                  data2 += '2';
 
                   setState(() {});
                 },
                 click3: () {
-                  data2 *= 10;
-
-                  data2 += 3;
+                  data2 += '3';
 
                   setState(() {});
                 },
                 click4: () {
                   operator();
 
-                  data1 = data2;
+                  data1 = double.parse(data2);
                   ope = '+';
-                  data2 = 0;
+                  data2 = '';
                   setState(() {});
                 }),
             const SizedBox(
@@ -226,23 +206,21 @@ class _VBodyState extends State<VBody> {
             CButtonRow(
                 text1: MOperator.plMi,
                 text2: MNumber.zero,
-                text3: MOperator.pow,
+                text3: MOperator.dot,
                 text4: MOperator.equal,
                 click1: () {
                   data2 *= -1;
                   setState(() {});
                 },
                 click2: () {
-                  data2 *= 10;
-
+                  data2 += '0';
                   setState(() {});
                 },
                 click3: () {
-                  operator();
-
-                  data1 = data2;
-                  ope = '^';
-                  data2 = 0;
+                  if (data2.contains('.')) {
+                  } else {
+                    data2 += '.';
+                  }
                   setState(() {});
                 },
                 click4: () {
