@@ -1,4 +1,5 @@
 class MNumber {
+  //modeling for number
   static const String one = '1';
   static const String two = '2';
 
