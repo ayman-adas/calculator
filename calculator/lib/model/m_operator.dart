@@ -1,4 +1,5 @@
 class MOperator {
+  // modeling for operations
   static const String plus = '+';
   static const String minus = '-';
 
