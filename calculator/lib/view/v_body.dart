@@ -99,24 +99,20 @@ class VBody extends StatefulWidget {
 class _VBodyState extends State<VBody> {
   String view() {
     //take answer and show it
-    if (ope != '' && ans != '' && num2 == '') {
-      return ans;
-    } else {
-      //take the number you insert and show it
-      return num2;
-    }
+    return ope != '' && ans != '' && num2 == '' ? ans : num2;
   }
 
   @override
   Widget build(BuildContext context) {
+    final VAnswer answerWidget = VAnswer(answer: view());
+
     return Container(
       //background for app
       color: Colors.black,
       child: Column(
         children: [
           //view answer
-          VAnswer(answer: view()),
-          //divider between answer and buttons
+          answerWidget, //divider between answer and buttons
           const Divider(height: 20, color: Colors.orange),
           CButtonRow(
               // text 1 to make clear for number
