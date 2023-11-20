@@ -143,6 +143,8 @@ class _VBodyState extends State<VBody> {
                   num2 = '';
                 } else {
                   num2 = num2.substring(0, num2.length - 1);
+                  ans = ans.substring(0, num2.length - 1);
+
                 }
 
                 setState(() {});
