@@ -8,9 +8,9 @@ class VAnswer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 50,
-      margin: const EdgeInsets.fromLTRB(30, 220, 0, 0),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 4,
+      padding: const EdgeInsets.fromLTRB(30, 190, 0, 0),
       child: Text(
         answer,
         //color for text in answer view
