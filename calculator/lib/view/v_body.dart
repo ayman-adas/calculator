@@ -141,11 +141,18 @@ class _VBodyState extends State<VBody> {
                 setState(() {});
               },
               click2: () {
-                if (num2.length == 1) {
-                  num2 = '';
+                if (ope != '' && ans != '' && num2 == '') {
+                  if (ans.length == 1) {
+                    ans = '';
+                  } else {
+                    ans = ans.substring(0, ans.length - 1);
+                  }
                 } else {
-                  num2 = num2.substring(0, num2.length - 1);
-                  ans = ans.substring(0, num2.length - 1);
+                  if (ans.length == 1) {
+                    ans = '';
+                  } else {
+                    ans = ans.substring(0, ans.length - 1);
+                  }
                 }
 
                 setState(() {});
