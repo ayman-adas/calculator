@@ -25,66 +25,81 @@ void operator() {
     //divide operation
     case '/':
       //to convert string to doule and make its operation
-      num1 /= double.parse(num2);
-      ope = '';
-      //to check is integer number or double
-      if (num1 == num1.toInt()) {
-        //make it an integer
-        num2 = num1.toInt().toString();
+      if (num2 == '') {
       } else {
-        num2 = num1.toString();
+        num1 /= double.parse(num2);
+        ope = '';
+        //to check is integer number or double
+        if (num1 == num1.toInt()) {
+          //make it an integer
+          num2 = num1.toInt().toString();
+        } else {
+          num2 = num1.toString();
+        }
+        ans = num2;
+        ope = '';
       }
-      ans = num2;
-      ope = '';
       break;
     //multiply operation
     case 'X':
-      num1 *= double.parse(num2);
-      ope = '';
-      if (num1 == num1.toInt()) {
-        num2 = num1.toString().substring(0, num1.toString().length - 2);
+      if (num2 == '') {
       } else {
-        num2 = num1.toString();
+        num1 *= double.parse(num2);
+        ope = '';
+        if (num1 == num1.toInt()) {
+          num2 = num1.toString().substring(0, num1.toString().length - 2);
+        } else {
+          num2 = num1.toString();
+        }
+        ans = num2;
+        ope = '';
       }
-      ans = num2;
-      ope = '';
       break;
     //plus operation
     case '+':
-      num1 += double.parse(num2);
-      ope = '';
-      if (num1 == num1.toInt()) {
-        num2 = num1.toString().substring(0, num1.toString().length - 2);
+      if (num2 == '') {
       } else {
-        num2 = num1.toString();
+        num1 += double.parse(num2);
+        ope = '';
+        if (num1 == num1.toInt()) {
+          num2 = num1.toString().substring(0, num1.toString().length - 2);
+        } else {
+          num2 = num1.toString();
+        }
+        ans = num2;
+        ope = '';
       }
-      ans = num2;
-      ope = '';
       break;
     //minus operaton
     case '-':
-      num1 -= double.parse(num2);
-      ope = '';
-      if (num1 == num1.toInt()) {
-        num2 = num1.toString().substring(0, num1.toString().length - 2);
+      if (num2 == '') {
       } else {
-        num2 = num1.toString();
+        num1 -= double.parse(num2);
+        ope = '';
+        if (num1 == num1.toInt()) {
+          num2 = num1.toString().substring(0, num1.toString().length - 2);
+        } else {
+          num2 = num1.toString();
+        }
+        ans = num2;
+        ope = '';
       }
-      ans = num2;
-      ope = '';
       break;
     //power operation
     case '^':
-      num1 = pow((num1), int.parse(num2));
-      ope = '';
-
-      if (num1 == num1.toInt()) {
-        num2 = num1.toString().substring(0, num1.toString().length - 2);
+      if (num2 == '') {
       } else {
-        num2 = num1.toString();
+        num1 = pow((num1), int.parse(num2));
+        ope = '';
+
+        if (num1 == num1.toInt()) {
+          num2 = num1.toString().substring(0, num1.toString().length - 2);
+        } else {
+          num2 = num1.toString();
+        }
+        ans = num2;
+        ope = '';
       }
-      ans = num2;
-      ope = '';
       break;
   }
 }
@@ -134,24 +149,27 @@ class _VBodyState extends State<VBody> {
               },
               click3: () {
                 operator();
-
-                num1 = double.parse(num2);
+                if (num2 == '') {
+                } else {
+                  num1 = double.parse(num2);
+                }
                 ope = '^';
                 num2 = '';
+
                 setState(() {});
               },
               click2: () {
                 if (ope != '' && ans != '' && num2 == '') {
-                  if (ans.length == 1) {
+                  if (ans.length <= 1) {
                     ans = '';
                   } else {
                     ans = ans.substring(0, ans.length - 1);
                   }
                 } else {
-                  if (ans.length == 1) {
-                    ans = '';
+                  if (num2.length <= 1) {
+                    num2 = '';
                   } else {
-                    ans = ans.substring(0, ans.length - 1);
+                    num2 = num2.substring(0, num2.length - 1);
                   }
                 }
 
@@ -159,11 +177,14 @@ class _VBodyState extends State<VBody> {
               },
               click4: () {
                 operator();
-
-                num1 = double.parse(num2);
+                if (num2 == '') {
+                } else {
+                  num1 = double.parse(num2);
+                }
                 num2 = '';
 
                 ope = '/';
+
                 setState(() {});
               }),
           const SizedBox(
@@ -194,10 +215,13 @@ class _VBodyState extends State<VBody> {
               },
               click4: () {
                 operator();
-
-                num1 = double.parse(num2);
+                if (num2 == '') {
+                } else {
+                  num1 = double.parse(num2);
+                }
                 ope = 'X';
                 num2 = '';
+
                 setState(() {});
               }),
           const SizedBox(
@@ -229,8 +253,10 @@ class _VBodyState extends State<VBody> {
               },
               click4: () {
                 operator();
-
-                num1 = double.parse(num2);
+                if (num2 == '') {
+                } else {
+                  num1 = double.parse(num2);
+                }
                 ope = '-';
                 num2 = '';
 
@@ -261,9 +287,13 @@ class _VBodyState extends State<VBody> {
               },
               click4: () {
                 operator();
-                num1 = double.parse(num2);
+                if (num2 == '') {
+                } else {
+                  num1 = double.parse(num2);
+                }
                 ope = '+';
                 num2 = '';
+
                 setState(() {});
               }),
           const SizedBox(
