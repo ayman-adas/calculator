@@ -113,7 +113,9 @@ class _VBodyState extends State<VBody> {
         children: [
           //view answer
           answerWidget, //divider between answer and buttons
-          const Divider(height: 20, color: Colors.orange),
+          Divider(
+              height: MediaQuery.of(context).size.height / 100,
+              color: Colors.orange),
           CButtonRow(
               // text 1 to make clear for number
               // text 2 to make delete the last number
@@ -144,7 +146,6 @@ class _VBodyState extends State<VBody> {
                 } else {
                   num2 = num2.substring(0, num2.length - 1);
                   ans = ans.substring(0, num2.length - 1);
-
                 }
 
                 setState(() {});
