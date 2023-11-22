@@ -14,7 +14,7 @@ class WButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 2),
+      padding: const EdgeInsets.only(left: 4.5),
       child: ElevatedButton(
         onPressed: click,
         style: ButtonStyle(
@@ -23,7 +23,9 @@ class WButton extends StatelessWidget {
           foregroundColor:
               MaterialStateProperty.all(const Color.fromARGB(255, 0, 255, 8)),
           shape: MaterialStateProperty.all(const CircleBorder()),
-          minimumSize: MaterialStateProperty.all(const Size(85, 85)),
+          minimumSize: MaterialStateProperty.all(Size(
+              MediaQuery.of(context).size.width / 4.8,
+              MediaQuery.of(context).size.width / 4.5)),
         ),
         child: Text(
           text,
